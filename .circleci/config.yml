@@ -20,13 +20,13 @@ jobs:
           command: apk add bash jq make
       - run:
           name: Terraform init
-          command: make init
+          command: terraform init
       - run:
           name: Terraform plan
-          command: make plan
+          command: terraform plan
       - run:
           name: Terraform apply
-          command: make apply
+          command: terraform apply
 
 workflows:
   version: 2
