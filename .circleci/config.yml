@@ -23,10 +23,16 @@ jobs:
           command: terraform init
       - run:
           name: Terraform plan
-          command: terraform plan
+          command: |
+            terraform plan \
+            --var AWS_PERSONAL_ACCESS_KEY=$AWS_PERSONAL_ACCESS_KEY \
+            --var AWS_PERSONAL_SECRET_KEY=$AWS_PERSONAL_SECRET_KEY
       - run:
           name: Terraform apply
-          command: terraform apply
+          command: |
+            terraform apply \
+            --var AWS_PERSONAL_ACCESS_KEY=$AWS_PERSONAL_ACCESS_KEY \
+            --var AWS_PERSONAL_SECRET_KEY=$AWS_PERSONAL_SECRET_KEY
 
 workflows:
   version: 2
