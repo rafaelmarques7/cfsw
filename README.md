@@ -14,36 +14,6 @@ terraform apply \
 --var AWS_PERSONAL_SECRET_KEY=$AWS_PERSONAL_SECRET_KEY
 ```
 
-## Arguments
-According to this documentation, the cloudfront distrubituion has a lot of arguments, which may be nested.
-The required top level args are:
-* origin
-* default_cache_behavior 
-* enabled 
-* restrictions
-* viewer_certificate
-
-The origin requires:
-* s3_origin_config -> origin_access_identity
-* domain_name
-* origin_id
- 
-The default_cache_bahaviour requires:
-* allowed_methods
-* cached_methods 
-* forwarded_values -> cookies / query_string
-* path_pattern 
-* target_origin_id
-* viewer_protocol_policy 
-
-The restriction arg requires:
-* geo_restriction -> restriction_type, locations
-
-The viewver_certificate requires:
-* one of : acm_certificate_arn / cloudfront_default_certificate / iam_certificate_id / minimum_protocol_version / ssl_support_method
-
-
-
 ## Origin Access Identity
 
 [Origin Access Identity](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html) (OAI) is a way of protecting your website origin s3 bucket from being exposed.
