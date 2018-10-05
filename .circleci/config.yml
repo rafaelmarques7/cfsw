@@ -1,0 +1,46 @@
+version: 2
+
+jobs:
+  validate_terraform:
+    docker:
+      - image: hashicorp/terraform
+    steps:   
+      - checkout
+      - run:
+          name: Install Alpine dependencies
+          command: apk add make      
+      - run:
+          name: Validate Terraform Formatting
+          command: make fmt
+  
+  deploy:
+    docker:
+      - image: hashicorp/terraform
+    steps:     
+      - checkout
+      - run:
+          name: Install Alpine dependencies
+          command: apk add bash jq make
+      - run:
+          name: Terraform init
+          command: make init
+      - run:
+          name: Terraform plan
+          command: make plan
+      - run:
+          name: Terraform apply
+          command: make apply
+
+workflows:
+  version: 2
+  deploy:
+    jobs:
+      - validate_terraform
+      - deploy:
+          requires:
+            - validate_terraform
+          filters:
+            branches:
+              only: master
+
+              
