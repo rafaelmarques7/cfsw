@@ -32,6 +32,16 @@ terraform apply \
 ```
 <hr />
 
+will create the following stack presented below:
+<p align="center">
+  <img src="./media/graph.jpg">
+</p>
+
+<!---
+  ![the deployment stack](./media/graph.jpg) 
+-->
+
+
 ## Origin Access Identity
 
 [Origin Access Identity](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html) (OAI) is a way of protecting your website origin s3 bucket from being exposed.
@@ -65,3 +75,6 @@ Note that the deployment of CF app requires around 15-20 minutes to be complete,
 
 how to make sure my.dev.economist.com points to the correct cloudfront distribution
 
+## PROBLEMS
+
+* every successful deployment creates a NEW CF app.
