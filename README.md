@@ -33,3 +33,5 @@ circular dependencies can be solved using a variable to reference in both depend
 ## Cloudfront Problems after deployment
 * base url not pointing to index.html
 * invalid pages not pointing to error.html
+
+should work now
