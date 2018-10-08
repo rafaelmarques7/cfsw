@@ -79,3 +79,6 @@ how to make sure my.dev.economist.com points to the correct cloudfront distribut
 ## PROBLEMS
 
 * every successful deployment creates a NEW CF app.
+  * is this the intended behaviour?
+  * if so, should the old CF app be deleted after the new completes deployment?
+  * if not, how to overcome this?

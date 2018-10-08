@@ -34,12 +34,12 @@ data "aws_iam_policy_document" "s3_policy" {
 # Create a bucket
 resource "aws_s3_bucket" "a_static_website" {
     bucket = "${var.bucket_name}"
-    acl    = "public-read"
+    # acl    = "public-read"
+    acl = private
     policy = "${data.aws_iam_policy_document.s3_policy.json}"
   
     website {
         index_document = "index.html"
-        # change to index for mma-fe
         error_document = "error.html"
     }
 }
@@ -50,7 +50,8 @@ resource "aws_s3_bucket_object" "index_page" {
     key     = "index.html"
     source  = "index.html"
     # this ACL should be reevaluated. Should the file still be public ???
-    acl    = "public-read"
+    # acl    = "public-read"
+    acl = private
     content_type = "text/html"
 }
 
@@ -60,7 +61,8 @@ resource "aws_s3_bucket_object" "error_page" {
     key     = "error.html"
     source  = "error.html"
     # this ACL should be reevaluated. Should the file still be public ???
-    acl    = "public-read"                      
+    # acl    = "public-read"
+    acl = private
     content_type = "text/html"
 }
 
@@ -82,6 +84,13 @@ resource "aws_cloudfront_distribution" "cfd" {
         s3_origin_config {
             origin_access_identity = "${aws_cloudfront_origin_access_identity.oia.cloudfront_access_identity_path}"
         }
+    }
+
+    # without this, aws returns their default error, instead of the one defined by us
+    custom_error_response {	
+        error_code = 404	
+        response_code = 404
+        response_page_path = "/error.html"	
     }
 
     default_cache_behavior {
