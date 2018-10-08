@@ -35,7 +35,7 @@ data "aws_iam_policy_document" "s3_policy" {
 resource "aws_s3_bucket" "a_static_website" {
     bucket = "${var.bucket_name}"
     # acl    = "public-read"
-    acl = private
+    acl     = "private"
     policy = "${data.aws_iam_policy_document.s3_policy.json}"
   
     website {
@@ -51,7 +51,7 @@ resource "aws_s3_bucket_object" "index_page" {
     source  = "index.html"
     # this ACL should be reevaluated. Should the file still be public ???
     # acl    = "public-read"
-    acl = private
+    acl     = "private"
     content_type = "text/html"
 }
 
@@ -62,7 +62,7 @@ resource "aws_s3_bucket_object" "error_page" {
     source  = "error.html"
     # this ACL should be reevaluated. Should the file still be public ???
     # acl    = "public-read"
-    acl = private
+    acl     = "private"
     content_type = "text/html"
 }
 
