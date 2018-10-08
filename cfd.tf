@@ -4,6 +4,7 @@ terraform {
     bucket = "devops-76-terraform-state"
     key    = "state_path"
     region = "us-east-1"
+    profile = "non-default-profile"
   }
 }
 
