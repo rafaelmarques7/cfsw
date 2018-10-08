@@ -84,12 +84,6 @@ resource "aws_cloudfront_distribution" "cfd" {
         }
     }
 
-    custom_error_response {
-        error_code = 404
-        response_code = 200
-        response_page_path = "/error.html"
-    }
-
     default_cache_behavior {
         allowed_methods         = ["HEAD", "GET"]
         cached_methods          = ["HEAD", "GET"]

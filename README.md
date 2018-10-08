@@ -28,7 +28,8 @@ Deploy with the following command:
 ```bash
 terraform apply \
 --var AWS_PERSONAL_ACCESS_KEY=$AWS_PERSONAL_ACCESS_KEY \
---var AWS_PERSONAL_SECRET_KEY=$AWS_PERSONAL_SECRET_KEY
+--var AWS_PERSONAL_SECRET_KEY=$AWS_PERSONAL_SECRET_KEY \
+-auto-approve
 ```
 <hr />
 
