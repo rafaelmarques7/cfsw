@@ -1,4 +1,4 @@
-# Terraform backend
+# Terraform backend - configuration
 terraform {
   backend "s3" {
     bucket = "devops-76-terraform-state"
@@ -7,6 +7,7 @@ terraform {
   }
 }
 
+# Terraform backend - loading
 data "terraform_remote_state" "network" {
   backend = "s3"
   config {
@@ -108,7 +109,7 @@ resource "aws_cloudfront_distribution" "cfd" {
     # without this, aws returns their default error, instead of the one defined by us
     custom_error_response {	
         error_code = 404	
-        response_code = 400
+        response_code = 200
         response_page_path = "/error.html"	
     }
 
