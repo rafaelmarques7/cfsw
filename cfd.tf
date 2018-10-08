@@ -7,7 +7,6 @@ terraform {
   }
 }
 
-
 data "terraform_remote_state" "network" {
   backend = "s3"
   config {
@@ -16,7 +15,6 @@ data "terraform_remote_state" "network" {
     region = "us-east-1"
   }
 }
-
 
 # Input variables
 variable "AWS_PERSONAL_ACCESS_KEY" {}

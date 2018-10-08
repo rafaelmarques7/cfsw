@@ -33,6 +33,8 @@ terraform apply \
 ```
 <hr />
 
+blah
+
 will create the following stack presented below:
 <p align="center">
   <img src="./media/graph.jpg">
