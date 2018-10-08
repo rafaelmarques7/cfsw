@@ -4,9 +4,19 @@ terraform {
     bucket = "devops-76-terraform-state"
     key    = "state_path"
     region = "us-east-1"
-    profile = "non-default-profile"
   }
 }
+
+
+data "terraform_remote_state" "network" {
+  backend = "s3"
+  config {
+    bucket = "devops-76-terraform-state"
+    key    = "state_path"
+    region = "us-east-1"
+  }
+}
+
 
 # Input variables
 variable "AWS_PERSONAL_ACCESS_KEY" {}
