@@ -83,4 +83,15 @@ how to make sure my.dev.economist.com points to the correct cloudfront distribut
   * if so, should the old CF app be deleted after the new completes deployment?
   * if not, how to overcome this?
 
-https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-overview-required-fields.html
+I think this behaviour is being caused by a missing state file!
+Yes, yes it was
+
+According to [this](https://blog.gruntwork.io/how-to-manage-terraform-state-28f5697e68fa) article, it is possible to store the terraform state remotely
+  terraform remote config \
+    -backend=s3 \
+    -backend-config="bucket=(YOUR_BUCKET_NAME)" \
+    -backend-config="key=terraform.tfstate" \
+    -backend-config="region=(YOUR_BUCKET_REGION)" \
+    -backend-config="encrypt=true"
+
+This article is outdated (2016), and terraform "remote" does not exist anymore.

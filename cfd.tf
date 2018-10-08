@@ -1,3 +1,12 @@
+# Terraform backend
+terraform {
+  backend "s3" {
+    bucket = "devops-76-terraform-state"
+    key    = "state_path"
+    region = "us-east-1"
+  }
+}
+
 # Input variables
 variable "AWS_PERSONAL_ACCESS_KEY" {}
 variable "AWS_PERSONAL_SECRET_KEY" {}
@@ -82,15 +91,15 @@ resource "aws_cloudfront_distribution" "cfd" {
         origin_id        = "${aws_s3_bucket.a_static_website.id}"
       
         s3_origin_config {
-            # origin_access_identity = "${aws_cloudfront_origin_access_identity.oia.cloudfront_access_identity_path}"
-            origin_access_identity = "origin-access-identity/cloudfront/E3IILPWMC6EHO"
+            origin_access_identity = "${aws_cloudfront_origin_access_identity.oia.cloudfront_access_identity_path}"
+            # origin_access_identity = "origin-access-identity/cloudfront/E3IILPWMC6EHO"
         }
     }
 
     # without this, aws returns their default error, instead of the one defined by us
     custom_error_response {	
         error_code = 404	
-        response_code = 200
+        response_code = 400
         response_page_path = "/error.html"	
     }
 
@@ -112,7 +121,7 @@ resource "aws_cloudfront_distribution" "cfd" {
     restrictions {
         geo_restriction {
             restriction_type = "whitelist"
-            locations = ["US", "CA", "GB", "DE"]
+            locations = ["US", "CA", "GB", "DE", "ES"]
         }
     }
 
