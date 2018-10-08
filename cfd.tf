@@ -83,7 +83,7 @@ resource "aws_cloudfront_distribution" "cfd" {
       
         s3_origin_config {
             # origin_access_identity = "${aws_cloudfront_origin_access_identity.oia.cloudfront_access_identity_path}"
-            origin_access_identity = "origin-access-identity/cloudfront/E3L25VNHEQV0P2"
+            origin_access_identity = "origin-access-identity/cloudfront/E3IILPWMC6EHO"
         }
     }
 
