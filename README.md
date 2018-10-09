@@ -33,7 +33,6 @@ terraform apply \
 ```
 <hr />
 
-blah
 
 will create the following stack presented below:
 <p align="center">
