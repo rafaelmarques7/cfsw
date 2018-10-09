@@ -17,8 +17,10 @@ jobs:
     steps:     
       - checkout
       - run:
-          name: Install Alpine dependencies
-          command: apk add bash jq make
+          name: test env. variables 
+          command: |
+            echo $AWS_ACCESS_KEY
+            echo $AWS_SECRET_KEY
       - run:
           name: Terraform init
           command: terraform init
