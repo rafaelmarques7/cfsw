@@ -131,7 +131,7 @@ resource "aws_cloudfront_distribution" "cfd" {
     restrictions {
         geo_restriction {
             restriction_type = "whitelist"
-            locations = ["US", "CA", "GB", "DE", "ES"]
+            locations = ["US", "CA", "GB", "DE"]
         }
     }
 
