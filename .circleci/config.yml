@@ -26,14 +26,14 @@ jobs:
           name: Terraform plan
           command: |
             terraform plan \
-            --var AWS_ACCESS_KEY=$AWS_ACCESS_KEY \
-            --var AWS_SECRET_KEY=$AWS_SECRET_KEY 
+            --var AWS_PERSONAL_ACCESS_KEY=$AWS_ACCESS_KEY \
+            --var AWS_PERSONAL_SECRET_KEY=$AWS_SECRET_KEY 
       - run:
           name: Terraform apply
           command: |
             terraform apply \
-            --var AWS_ACCESS_KEY=$AWS_ACCESS_KEY \
-            --var AWS_SECRET_KEY=$AWS_SECRET_KEY \
+            --var AWS_PERSONAL_ACCESS_KEY=$AWS_ACCESS_KEY \
+            --var AWS_PERSONAL_SECRET_KEY=$AWS_SECRET_KEY \
             -auto-approve
             
 
